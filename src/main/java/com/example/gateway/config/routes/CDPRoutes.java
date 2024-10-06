@@ -4,7 +4,7 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 
 public class CDPRoutes {
 
-    private static String DOMEN = "http://cdp.default.svc.cluster.local:8080";
+    private static String DOMEN = System.getenv("CDP_URL");
 
     public static RouteLocatorBuilder.Builder cdpRoutes(RouteLocatorBuilder.Builder routes) {
         return routes
