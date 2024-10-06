@@ -11,7 +11,7 @@ public class CDPRoutes {
                 .route(r -> r.path("/organizations/{orgName}/projects/{projectName}/tasks")
                         .filters(f -> f.rewritePath(
                                 "/organizations/(?<orgName>.*)/projects/(?<projectName>.*)/tasks",
-                                "/organizations/${orgName}/projects/${projectName}/tasks"))
+                                "/v1/organizations/${orgName}/projects/${projectName}/tasks"))
                         .uri(DOMEN));
     }
 

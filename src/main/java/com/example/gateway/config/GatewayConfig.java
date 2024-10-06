@@ -18,10 +18,10 @@ public class GatewayConfig {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         RouteLocatorBuilder.Builder routes = builder.routes();
 
-        metricRoutes(routes);
-        metadataRoutes(routes);
-        cdpRoutes(routes);
+        routes = metricRoutes(routes);
+        routes = metadataRoutes(routes);
+        routes = cdpRoutes(routes);
 
-        return builder.routes().build();
+        return routes.build();
     }
 }

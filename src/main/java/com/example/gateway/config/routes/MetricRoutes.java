@@ -8,10 +8,10 @@ public class MetricRoutes {
 
     public static RouteLocatorBuilder.Builder metricRoutes(RouteLocatorBuilder.Builder routes) {
         return routes
-                .route(r -> r.path("/organizations/{orgName}/projects/{projectName}/tasks/analytics")
+                .route(r -> r.path("/organizations/{orgName}/projects/{projectName}/metric")
                         .filters(f -> f.rewritePath(
-                                "/organizations/(?<orgName>.*)/projects/(?<projectName>.*)/tasks",
-                                "/organizations/${orgName}/projects/${projectName}/tasks"))
+                                "/organizations/(?<orgName>.*)/projects/(?<projectName>.*)/metric",
+                                "/v1/organizations/${orgName}/projects/${projectName}/metric"))
                         .uri(DOMEN));
     }
 
