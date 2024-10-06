@@ -4,7 +4,7 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 
 public class MetricRoutes {
 
-    private static String DOMEN = "http://metric-service";
+    private static String DOMEN = "http://metric.default.svc.cluster.local:8084";
 
     public static RouteLocatorBuilder.Builder metricRoutes(RouteLocatorBuilder.Builder routes) {
         return routes

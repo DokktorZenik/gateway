@@ -4,7 +4,7 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 
 public class MetadataRoutes {
 
-    private static String DOMEN = "http://metadata-service";
+    private static String DOMEN = "http://metadata.default.svc.cluster.local:8081";
 
     public static RouteLocatorBuilder.Builder metadataRoutes(RouteLocatorBuilder.Builder routes) {
         return routes
