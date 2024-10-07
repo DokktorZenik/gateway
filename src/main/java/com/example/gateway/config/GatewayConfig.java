@@ -5,9 +5,9 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.example.gateway.config.routes.CDPRoutes.cdpRoutes;
-import static com.example.gateway.config.routes.MetadataRoutes.metadataRoutes;
-import static com.example.gateway.config.routes.MetricRoutes.metricRoutes;
+import static com.example.gateway.routes.CDPRoutes.cdpRoutes;
+import static com.example.gateway.routes.MetadataRoutes.metadataRoutes;
+import static com.example.gateway.routes.MetricRoutes.metricRoutes;
 
 
 @Configuration
