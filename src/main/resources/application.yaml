@@ -1,2 +1,5 @@
 server:
   port: 8085
+
+external:
+  user-service-api: ${AUTH_API}
