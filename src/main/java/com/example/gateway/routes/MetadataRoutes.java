@@ -1,10 +1,12 @@
 package com.example.gateway.routes;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 
 public class MetadataRoutes {
 
-    private static String DOMEN = System.getenv("METADATA_URL");
+    @Value("${external.metadata-api}")
+    private static String DOMEN;
 
     public static RouteLocatorBuilder.Builder metadataRoutes(RouteLocatorBuilder.Builder routes) {
         return routes

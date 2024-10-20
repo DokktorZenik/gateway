@@ -3,3 +3,6 @@ server:
 
 external:
   user-service-api: ${AUTH_API}
+  cdp-api: ${CDP_URL}
+  metric-api: ${METRIC_URL}
+  metadata-api: ${METADATA_URL}

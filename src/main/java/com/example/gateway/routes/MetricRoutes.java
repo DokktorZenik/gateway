@@ -1,10 +1,12 @@
 package com.example.gateway.routes;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 
 public class MetricRoutes {
 
-    private static String DOMEN = System.getenv("METRIC_URL");
+    @Value("${external.metric-api}")
+    private static String DOMEN;
 
     public static RouteLocatorBuilder.Builder metricRoutes(RouteLocatorBuilder.Builder routes) {
         return routes
