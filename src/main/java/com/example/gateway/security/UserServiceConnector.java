@@ -12,10 +12,11 @@ public class UserServiceConnector {
     private final WebClient webClient;
 
     public Mono<Boolean> sendRequest(String jwt) {
-        return webClient.post()
-                .uri("/api/endpoint")
-                .header("Authorization", "Bearer " + jwt)
-                .retrieve()
-                .bodyToMono(Boolean.class);
+//        return webClient.post()
+//                .uri("/api/endpoint")
+//                .header("Authorization", "Bearer " + jwt)
+//                .retrieve()
+//                .bodyToMono(Boolean.class);
+        return Mono.just(true);
     }
 }

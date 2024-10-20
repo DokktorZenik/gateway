@@ -42,10 +42,8 @@ public class GatewayFilter implements WebFilter {
         return userServiceConnector.sendRequest(jwt)
                 .flatMap(result -> {
                     if (result) {
-
                         return chain.filter(exchange);
                     } else {
-
                         exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
                         DataBuffer buffer = exchange.getResponse()
                                 .bufferFactory()
@@ -55,12 +53,10 @@ public class GatewayFilter implements WebFilter {
                     }
                 })
                 .onErrorResume(e -> {
-
-                    logger.error("Error occurred while validating JWT: ", e);
                     exchange.getResponse().setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
                     DataBuffer buffer = exchange.getResponse()
                             .bufferFactory()
-                            .wrap("Internal server error".getBytes(StandardCharsets.UTF_8));
+                            .wrap(("Internal server error " + e.getMessage()).getBytes(StandardCharsets.UTF_8));
                     exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
                     return exchange.getResponse().writeWith(Mono.just(buffer));
                 });
