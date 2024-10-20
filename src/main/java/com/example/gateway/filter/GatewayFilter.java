@@ -1,6 +1,7 @@
 package com.example.gateway.filter;
 
 import com.example.gateway.security.UserServiceConnector;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -16,9 +17,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class GatewayFilter implements WebFilter {
 
-    UserServiceConnector userServiceConnector;
+    private final UserServiceConnector userServiceConnector;
 
     private static final Logger logger = LoggerFactory.getLogger(GatewayFilter.class);
 
