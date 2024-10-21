@@ -1,20 +1,24 @@
 package com.example.gateway.routes;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.example.gateway.util.Utils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.stereotype.Component;
 
-public class CDPRoutes {
+@Component
+@RequiredArgsConstructor
+public class CDPRoute implements Route {
 
-    @Value("${external.cdp-api}")
-    private static String DOMEN;
+    private final Utils utils;
 
-    public static RouteLocatorBuilder.Builder cdpRoutes(RouteLocatorBuilder.Builder routes) {
+    @Override
+    public RouteLocatorBuilder.Builder routes(RouteLocatorBuilder.Builder routes) {
         return routes
                 .route(r -> r.path("/organizations/{orgName}/projects/{projectName}/tasks")
                         .filters(f -> f.rewritePath(
                                 "/organizations/(?<orgName>.*)/projects/(?<projectName>.*)/tasks",
                                 "/v1/organizations/${orgName}/projects/${projectName}/tasks"))
-                        .uri(DOMEN));
+                        .uri(utils.getCDP_DOMEN()));
     }
 
 }

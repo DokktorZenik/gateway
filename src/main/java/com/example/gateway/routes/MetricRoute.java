@@ -1,20 +1,24 @@
 package com.example.gateway.routes;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.example.gateway.util.Utils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.stereotype.Component;
 
-public class MetricRoutes {
+@Component
+@RequiredArgsConstructor
+public class MetricRoute implements Route {
 
-    @Value("${external.metric-api}")
-    private static String DOMEN;
+    private final Utils utils;
 
-    public static RouteLocatorBuilder.Builder metricRoutes(RouteLocatorBuilder.Builder routes) {
+    @Override
+    public RouteLocatorBuilder.Builder routes(RouteLocatorBuilder.Builder routes) {
         return routes
                 .route(r -> r.path("/organizations/{orgName}/projects/{projectName}/metric")
                         .filters(f -> f.rewritePath(
                                 "/organizations/(?<orgName>.*)/projects/(?<projectName>.*)/metric",
                                 "/v1/organizations/${orgName}/projects/${projectName}/metric"))
-                        .uri(DOMEN));
+                        .uri(utils.getMETRIC_DOMEN()));
     }
 
 }
