@@ -26,6 +26,11 @@ public class GatewayFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+        exchange.getAttributes().put("CORS_FILTERED", true);
+        Boolean isCorsFiltered = exchange.getAttribute("CORS_FILTERED");
+        if (Boolean.TRUE.equals(isCorsFiltered)) {
+            return chain.filter(exchange);
+        }
         logger.info("Incoming request to internal service: " + exchange.getRequest().getURI());
 
         String jwt = exchange.getRequest().getHeaders().getFirst("Authorization");

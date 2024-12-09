@@ -2,7 +2,7 @@ server:
   port: 8085
 
 external:
-  user-service-api: ${AUTH_API}
+  user-service-api: ${USER_URL}
   cdp-api: ${CDP_URL}
   metric-api: ${METRIC_URL}
   metadata-api: ${METADATA_URL}

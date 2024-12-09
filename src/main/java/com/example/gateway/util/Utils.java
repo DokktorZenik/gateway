@@ -19,5 +19,5 @@ public class Utils {
 
 
     @Value("${external.user-service-api}")
-    private String USER_API;
+    private String USER_DOMAIN;
 }
