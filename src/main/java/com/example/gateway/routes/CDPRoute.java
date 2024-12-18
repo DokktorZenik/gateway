@@ -18,6 +18,11 @@ public class CDPRoute implements Route {
                         .filters(f -> f.rewritePath(
                                 "/organizations/(?<orgName>.*)/projects/(?<projectName>.*)/tasks",
                                 "/v1/organizations/${orgName}/projects/${projectName}/tasks"))
+                        .uri(utils.getCDP_DOMEN()))
+                .route(r -> r.path("/organizations/{orgName}/projects/{projectName}/tasks/{taskId}")
+                        .filters(f -> f.rewritePath(
+                                "/organizations/(?<orgName>.*)/projects/(?<projectName>.*)/tasks/(?<taskId>.*)",
+                                "/v1/organizations/${orgName}/projects/${projectName}/tasks/${taskId}"))
                         .uri(utils.getCDP_DOMEN()));
     }
 

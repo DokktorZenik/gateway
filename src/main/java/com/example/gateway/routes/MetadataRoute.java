@@ -61,6 +61,31 @@ public class MetadataRoute implements Route {
                         .filters(f -> f.rewritePath(
                                 "/organizations/(?<orgName>.*)/projects/(?<projectName>.*)/fields/(?<fieldTitle>.*)",
                                 "/v1/organizations/${orgName}/projects/${projectName}/fields/${fieldTitle}"))
+                        .uri(utils.getMETADATA_DOMEN()))
+                .route(r -> r.path("/organizations/{orgName}/priorities")
+                        .filters(f -> f.rewritePath(
+                                "/organizations/(?<orgName>.*)/priorities",
+                                "/v1/organizations/${orgName}/priorities"))
+                        .uri(utils.getMETADATA_DOMEN()))
+                .route(r -> r.path("/organizations/{orgName}/statuses")
+                        .filters(f -> f.rewritePath(
+                                "/organizations/(?<orgName>.*)/statuses",
+                                "/v1/organizations/${orgName}/statuses"))
+                        .uri(utils.getMETADATA_DOMEN()))
+                .route(r -> r.path("/organizations/{orgName}/estimates")
+                        .filters(f -> f.rewritePath(
+                                "/organizations/(?<orgName>.*)/estimates",
+                                "/v1/organizations/${orgName}/estimates"))
+                        .uri(utils.getMETADATA_DOMEN()))
+                .route(r -> r.path("/organizations/user/{userId}")
+                        .filters(f -> f.rewritePath(
+                                "/organizations/user/(?<userId>.*)",
+                                "/v1/organizations/user/${userId}"))
+                        .uri(utils.getMETADATA_DOMEN()))
+                .route(r -> r.path("/organizations/{orgName}/projects/user/{userId}")
+                        .filters(f -> f.rewritePath(
+                                "/organizations/(?<orgName>.*)/projects/user/(?<userId>.*)",
+                                "/v1/organizations/${orgName}/projects/user/${userId}"))
                         .uri(utils.getMETADATA_DOMEN()));
     }
 
